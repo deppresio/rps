@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function computerPlay() {
+            let rn = Math.floor(Math.random()* 100);
+        let result;
+            if (rn < 33) {
+                result = "rock";
+            } else if (rn < 66 && rn > 34) {
+               result = "paper";
+            } else {
+               result = "scissors";
+            }
+            return result;
+        }
+      
+        function playRound(playerSelection, computerSelection) {
+            if (playerSelection == "rock" && computerSelection == "paper") {
+                return "You Lose! Paper beats rock";
+            } else if (playerSelection == "paper" && computerSelection == "scissors") {
+                return "You Lose! Scissors beats paper";
+            } else if (playerSelection == "scissors" && computerSelection == "rock") {
+                return "You Lose! Rock beats scissors";
+            } else if (playerSelection == "paper" && computerSelection == "paper") {
+                return "It's a tie!";
+            } else if (playerSelection == "rock" && computerSelection == "rock") {
+                return "It's a tie!";
+            } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+                return "It's a tie!";
+            } else {
+               return "You Win!"
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
