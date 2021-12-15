@@ -21,27 +21,104 @@
             }
             return result;
         }
-      
+        let computerSelection = computerPlay();
+        let playerSelection = prompt("Rock, Paper, or Scissors?");
+        // might have to set this one to something else, like with computerSelection?
+        let defeat = "You lose!";
+        let tie = "It's a tie!";
+        let victory = "You win! Or maybe your answer was invalid lol";
+
         function playRound(playerSelection, computerSelection) {
-            if (playerSelection == "rock" && computerSelection == "paper") {
-                return "You Lose! Paper beats rock";
-            } else if (playerSelection == "paper" && computerSelection == "scissors") {
-                return "You Lose! Scissors beats paper";
-            } else if (playerSelection == "scissors" && computerSelection == "rock") {
-                return "You Lose! Rock beats scissors";
-            } else if (playerSelection == "paper" && computerSelection == "paper") {
-                return "It's a tie!";
-            } else if (playerSelection == "rock" && computerSelection == "rock") {
-                return "It's a tie!";
-            } else if (playerSelection == "scissors" && computerSelection == "scissors") {
-                return "It's a tie!";
+            
+            if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
+                return defeat;
+            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
+                return defeat;
+            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
+                return defeat;
+            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "paper") {
+                return tie;
+            } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
+                return tie;
+            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
+                return tie;
             } else {
-               return "You Win!"
+               return victory;
             }
         }
+        // could fix this so it can return invalid. Fix victory too in that case
+
+        
+           // let results = playRound(playerSelection, computerSelection);
+           //potentially make parameter for this results?
+        function game() {
+         //probably need to prompt within the last function so it'll prompt five times. 
+         //maybe move that whole function into here?
 
 
+          
+            let x = 0;
+            let y = 0;
+          if (playRound(playerSelection, computerSelection) === victory) {
+              x++;
+          } else if (playRound(playerSelection, computerSelection) === defeat) {
+              y++;
+            } else {
+            }
+            console.log(`The score is ${x} to ${y}.`)
+            computerSelection = computerPlay();
+            playerSelection = prompt("Rock, Paper, or Scissors?");
+        
+          if (playRound(playerSelection, computerSelection) === victory) {
+              x++;
+          } else if (playRound(playerSelection, computerSelection) === defeat) {
+              y++;
+            } else {
+                
+            }
+            console.log(`The score is ${x} to ${y}.`)
+            computerSelection = computerPlay();
+            playerSelection = prompt("Rock, Paper, or Scissors?");
 
+            if (playRound(playerSelection, computerSelection) === victory) {
+              x++;
+          } else if (playRound(playerSelection, computerSelection) === defeat) {
+              y++;
+            } else {
+                
+            }
+            console.log(`The score is ${x} to ${y}.`)
+            computerSelection = computerPlay();
+            playerSelection = prompt("Rock, Paper, or Scissors?");
+
+            if (playRound(playerSelection, computerSelection) === victory) {
+              x++;
+          } else if (playRound(playerSelection, computerSelection) === defeat) {
+              y++;
+            } else {
+            
+            }
+            console.log(`The score is ${x} to ${y}.`)
+            computerSelection = computerPlay();
+            playerSelection = prompt("Rock, Paper, or Scissors?");
+
+            if (playRound(playerSelection, computerSelection) === victory) {
+              x++;
+          } else if (playRound(playerSelection, computerSelection) === defeat) {
+              y++;
+            } else {
+                
+            }
+            console.log(`The score is ${x} to ${y}.`)
+            if (x > y) {
+                console.log("You Won!");
+            } else if (x < y) {
+                console.log("You Lost!");
+            } else {
+                console.log("It's a tie!")
+            }
+        }
+          
     </script>
 </body>
 </html>
