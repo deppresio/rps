@@ -8,28 +8,15 @@
 </head>
 <body>
     <script>
-        
+        //chooses computer's choice of rock, paper, or scissors
         function computerPlay() {
-            let rn = Math.floor(Math.random()* 100);
-        let result;
-            if (rn < 33) {
-                result = "rock";
-            } else if (rn < 66 && rn > 34) {
-               result = "paper";
-            } else {
-               result = "scissors";
-            }
-            return result;
-        }
-        let computerSelection = computerPlay();
-        let playerSelection = prompt("Rock, Paper, or Scissors?");
-        // might have to set this one to something else, like with computerSelection?
-        let defeat = "You lose!";
-        let tie = "It's a tie!";
-        let victory = "You win! Or maybe your answer was invalid lol";
-
-        function playRound(playerSelection, computerSelection) {
-            
+            var options = ["scissors", "rock", "paper"];
+            var choice = options[Math.floor(Math.random()*options.length)];
+            return choice;
+        } 
+       
+        // plays one single round of rps and returns the winner, or else invalid.
+       function playRound (playerSelection, computerPlay) {
             if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
                 return defeat;
             } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
@@ -42,83 +29,50 @@
                 return tie;
             } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
                 return tie;
+            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
+                return victory;
+            } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
+                return victory;
+            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
+                return victory;
             } else {
-               return victory;
-            }
-        }
-        // could fix this so it can return invalid. Fix victory too in that case
-
+               return invalid;
+            } 
+       }
+        let defeat = "You lose!";
+        let tie = "It's a tie!";
+        let victory = "You win! Or maybe your answer was invalid lol";
+        let invalid = "invalid input";
+        let computerSelection;
         
-           // let results = playRound(playerSelection, computerSelection);
-           //potentially make parameter for this results?
-        function game() {
-         //probably need to prompt within the last function so it'll prompt five times. 
-         //maybe move that whole function into here?
-
-
-          
+        //input game() into the console to play rps five times, and alert the results.
+        function game(){
             let x = 0;
             let y = 0;
-          if (playRound(playerSelection, computerSelection) === victory) {
-              x++;
-          } else if (playRound(playerSelection, computerSelection) === defeat) {
-              y++;
-            } else {
+            for (let i = 0; i < 5; i++) {
+                let playerSelection = prompt("Rock, Paper, or Scissors?");
+                computerSelection = computerPlay();
+                if (playRound(playerSelection, computerSelection) === victory) {
+                    x++;
+                    console.log("You won!");
+                } else if (playRound(playerSelection, computerSelection) === defeat) {
+                    y++;
+                    console.log("You lost!");
+                } else if (playRound(playerSelection, computerSelection) === tie) {
+                    console.log("It's a tie!");
+                } else {
+                    console.log("invalid input");
+                }
+                console.log(`The score is ${x} to ${y}.`);
             }
-            console.log(`The score is ${x} to ${y}.`)
-            computerSelection = computerPlay();
-            playerSelection = prompt("Rock, Paper, or Scissors?");
-        
-          if (playRound(playerSelection, computerSelection) === victory) {
-              x++;
-          } else if (playRound(playerSelection, computerSelection) === defeat) {
-              y++;
-            } else {
-                
-            }
-            console.log(`The score is ${x} to ${y}.`)
-            computerSelection = computerPlay();
-            playerSelection = prompt("Rock, Paper, or Scissors?");
-
-            if (playRound(playerSelection, computerSelection) === victory) {
-              x++;
-          } else if (playRound(playerSelection, computerSelection) === defeat) {
-              y++;
-            } else {
-                
-            }
-            console.log(`The score is ${x} to ${y}.`)
-            computerSelection = computerPlay();
-            playerSelection = prompt("Rock, Paper, or Scissors?");
-
-            if (playRound(playerSelection, computerSelection) === victory) {
-              x++;
-          } else if (playRound(playerSelection, computerSelection) === defeat) {
-              y++;
-            } else {
-            
-            }
-            console.log(`The score is ${x} to ${y}.`)
-            computerSelection = computerPlay();
-            playerSelection = prompt("Rock, Paper, or Scissors?");
-
-            if (playRound(playerSelection, computerSelection) === victory) {
-              x++;
-          } else if (playRound(playerSelection, computerSelection) === defeat) {
-              y++;
-            } else {
-                
-            }
-            console.log(`The score is ${x} to ${y}.`)
             if (x > y) {
-                console.log("You Won!");
+                alert("You Won!");
             } else if (x < y) {
-                console.log("You Lost!");
+                alert("You Lost!");
             } else {
-                console.log("It's a tie!")
+                alert("It's a tie!")
             }
-        }
-          
+        } 
     </script>
 </body>
 </html>
