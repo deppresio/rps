@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id = "div">Results</div>
+    
     <script>
+        
+        
         //chooses computer's choice of rock, paper, or scissors
         function computerPlay() {
             var options = ["scissors", "rock", "paper"];
@@ -41,7 +49,7 @@
        }
         let defeat = "You lose!";
         let tie = "It's a tie!";
-        let victory = "You win! Or maybe your answer was invalid lol";
+        let victory = "You win!";
         let invalid = "invalid input";
         let computerSelection;
         
@@ -49,7 +57,7 @@
         function game(){
             let x = 0;
             let y = 0;
-            for (let i = 0; i < 5; i++) {
+      //      for (let i = 0; i < 5; i++) {
                 let playerSelection = prompt("Rock, Paper, or Scissors?");
                 computerSelection = computerPlay();
                 if (playRound(playerSelection, computerSelection) === victory) {
@@ -64,7 +72,7 @@
                     console.log("invalid input");
                 }
                 console.log(`The score is ${x} to ${y}.`);
-            }
+   //         }
             if (x > y) {
                 alert("You Won!");
             } else if (x < y) {
@@ -73,6 +81,26 @@
                 alert("It's a tie!")
             }
         } 
+
+        const rock = document.querySelector("#rock");
+        rock.addEventListener("click", () => {
+            let playerSelection = "rock";
+            computerSelection = computerPlay();
+            console.log(playRound(playerSelection, computerSelection));
+            
+        });
+        const paper = document.querySelector("#paper");
+        paper.addEventListener("click", () => {
+            let playerSelection = "paper";
+            computerSelection = computerPlay();
+            console.log(playRound(playerSelection, computerSelection));
+        });
+        const scissors = document.querySelector("#scissors");
+        scissors.addEventListener("click", () => {
+            let playerSelection = "scissors";
+            computerSelection = computerPlay();
+            console.log(playRound(playerSelection, computerSelection));
+        });
     </script>
 </body>
 </html>
