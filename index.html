@@ -11,7 +11,7 @@
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
-    <div id = "div">Results</div>
+    <div id = "div"></div>
     
     <script>
         
@@ -25,39 +25,41 @@
        
         // plays one single round of rps and returns the winner, or else invalid.
        function playRound (playerSelection, computerPlay) {
-            if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
-                return defeat;
-            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
-                return defeat;
-            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
-                return defeat;
-            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "paper") {
-                return tie;
-            } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
-                return tie;
-            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
-                return tie;
-            } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
-                return victory;
-            } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
-                return victory;
-            } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
-                return victory;
-            } else {
-               return invalid;
-            } 
-       }
+                if (playerSelection.toLowerCase() == "rock" && computerSelection == "paper") {
+                    return defeat;
+                } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "scissors") {
+                    return defeat;
+                } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "rock") {
+                    return defeat;
+                } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "paper") {
+                    return tie;
+                } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "rock") {
+                    return tie;
+                } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "scissors") {
+                    return tie;
+                } else if (playerSelection.toLowerCase() == "paper" && computerSelection == "rock") {
+                    return victory;
+                } else if (playerSelection.toLowerCase() == "rock" && computerSelection == "scissors") {
+                    return victory;
+                } else if (playerSelection.toLowerCase() == "scissors" && computerSelection == "paper") {
+                    return victory;
+                } else {
+                return invalid;
+                } 
+            }    
         let defeat = "You lose!";
         let tie = "It's a tie!";
         let victory = "You win!";
         let invalid = "invalid input";
         let computerSelection;
         
+        
+        
         //input game() into the console to play rps five times, and alert the results.
-        function game(){
+    /*    function game(){
             let x = 0;
             let y = 0;
-      //      for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 5; i++) {
                 let playerSelection = prompt("Rock, Paper, or Scissors?");
                 computerSelection = computerPlay();
                 if (playRound(playerSelection, computerSelection) === victory) {
@@ -72,7 +74,7 @@
                     console.log("invalid input");
                 }
                 console.log(`The score is ${x} to ${y}.`);
-   //         }
+            }
             if (x > y) {
                 alert("You Won!");
             } else if (x < y) {
@@ -80,27 +82,39 @@
             } else {
                 alert("It's a tie!")
             }
-        } 
+              } */
 
         const rock = document.querySelector("#rock");
         rock.addEventListener("click", () => {
             let playerSelection = "rock";
             computerSelection = computerPlay();
-            console.log(playRound(playerSelection, computerSelection));
-            
+            let div = document.querySelector("#div");
+            let div2 = document.createElement("div");
+            div2.textContent = `${playRound(playerSelection, computerSelection)}`;
+            console.log(`${playRound(playerSelection, computerSelection)}`);
+            div.appendChild(div2);
         });
         const paper = document.querySelector("#paper");
         paper.addEventListener("click", () => {
             let playerSelection = "paper";
             computerSelection = computerPlay();
-            console.log(playRound(playerSelection, computerSelection));
+            let div = document.querySelector("#div");
+            let div2 = document.createElement("div");
+            div2.textContent = `${playRound(playerSelection, computerSelection)}`;
+            div.appendChild(div2);
         });
         const scissors = document.querySelector("#scissors");
         scissors.addEventListener("click", () => {
             let playerSelection = "scissors";
             computerSelection = computerPlay();
-            console.log(playRound(playerSelection, computerSelection));
+            let div = document.querySelector("#div");
+            let div2 = document.createElement("div");
+            div2.textContent = `${playRound(playerSelection, computerSelection)}`;
+            div.appendChild(div2);
         });
+    // problem--i need to keep track of score outside of each individual game, 
+    // so I can't just run game() inside of the template literals. 
+    //What if hitting a button only set the playerSelection, and the rest was outside?
     </script>
 </body>
 </html>
